@@ -1,0 +1,21 @@
+
+
+spring: 
+  jpa: 
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://localhost:3306/ipark?useSSL=false  
+    username: root
+    password: root  
+    initialization-mode: always
+    continue-on-error: true  
+  messages: 
+     basename: messages
+
+     
+logging: 
+  level: 
+    org: 
+      springframework: ERROR
