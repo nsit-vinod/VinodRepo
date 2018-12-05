@@ -55,7 +55,7 @@ public class UserController {
 		return userService.findAllUsers();
 	}
 	
-	@GetMapping(path="/user/vehicle", params= {"vehicleRegistrationNumberId"})
+	@GetMapping(path="/user/vehicle", params= {"vehicleRegistrationNumber"})
 	public User getUserByVehicleRegistrationNumber(@RequestParam("vehicleRegistrationNumber") String vehicleRegistrationNumber) {
 		
 		return userService.getUserByVehicleRegistrationNumber(vehicleRegistrationNumber);
