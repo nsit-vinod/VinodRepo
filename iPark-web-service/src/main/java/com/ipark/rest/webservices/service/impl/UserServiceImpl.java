@@ -8,9 +8,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ipark.rest.webservices.exception.UserNotFoundException;
+import com.ipark.rest.webservices.exception.VehicleNotFoundException;
 import com.ipark.rest.webservices.model.User;
+import com.ipark.rest.webservices.model.Vehicle;
 import com.ipark.rest.webservices.repository.UserRepository;
 import com.ipark.rest.webservices.service.UserService;
+import com.ipark.rest.webservices.service.VehicleService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,6 +22,8 @@ public class UserServiceImpl implements UserService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private VehicleService vehicleService;
 	@Override
 	public User createUser(User user) {
 		// TODO Auto-generated method stub
@@ -79,6 +84,13 @@ public class UserServiceImpl implements UserService {
 		existingUser.setPassword(bCryptPasswordEncoder.encode(password));
 		userRepository.save(existingUser);
 		return "Password updated successfully.";
+	}
+
+	@Override
+	public User getUserByVehicleRegistrationNumber(String vehicleRegistrationNumber) {
+	Vehicle vehicle =	vehicleService.getVehicleByRegistrationNumber(vehicleRegistrationNumber);
+		
+	return vehicle.getUser();
 	}
 
 }

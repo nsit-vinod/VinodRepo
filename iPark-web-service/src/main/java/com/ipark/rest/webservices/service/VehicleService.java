@@ -17,5 +17,7 @@ public interface VehicleService {
 	public Vehicle getVehicleById(Long vehicleId);
 
 	public void deleteVehicle(Long vehicleId);
+
+	Vehicle getVehicleByRegistrationNumber(String vehicleRegistrationNumber);
 	
 }

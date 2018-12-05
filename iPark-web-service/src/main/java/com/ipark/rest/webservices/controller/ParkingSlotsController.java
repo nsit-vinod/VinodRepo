@@ -43,5 +43,10 @@ public class ParkingSlotsController {
 		// TODO Auto-generated method stub
 		return parkingSlotsService.findAllAvailableSlots();
 	}
+	
+	@GetMapping(path="/slots/probability")
+	public Double getProbabilityOfGettingSlots() {
+		return 90.0;
+	}
 
 }

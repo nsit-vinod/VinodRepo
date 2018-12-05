@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipark.rest.webservices.model.User;
@@ -52,6 +53,12 @@ public class UserController {
 	public List<User> findAllUsers() {
 		// TODO Auto-generated method stub
 		return userService.findAllUsers();
+	}
+	
+	@GetMapping(path="/user/vehicle", params= {"vehicleRegistrationNumberId"})
+	public User getUserByVehicleRegistrationNumber(@RequestParam("vehicleRegistrationNumber") String vehicleRegistrationNumber) {
+		
+		return userService.getUserByVehicleRegistrationNumber(vehicleRegistrationNumber);
 	}
 
 }

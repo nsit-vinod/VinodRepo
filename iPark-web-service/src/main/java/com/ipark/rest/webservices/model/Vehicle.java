@@ -19,14 +19,14 @@ public class Vehicle {
 	private Long id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="user_id", nullable =false)
 	private User user;
 	
-	@Column(name="vehicle_reg_no")
+	@Column(name="vehicle_reg_no", nullable =false)
 	private String vehicleRegistrationNumber;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="vechile_cat_id")
+	@JoinColumn(name="vechile_cat_id", nullable =false)
 	private VehicleCategory vehicleCategory;
 
 	public Long getId() {
@@ -60,9 +60,4 @@ public class Vehicle {
 	public void setVehicleCategory(VehicleCategory vehicleCategory) {
 		this.vehicleCategory = vehicleCategory;
 	}
-	
-	
-	
-	
-	
 }

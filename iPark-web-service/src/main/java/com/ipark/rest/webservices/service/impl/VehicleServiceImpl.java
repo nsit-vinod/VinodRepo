@@ -72,5 +72,14 @@ public class VehicleServiceImpl implements VehicleService {
 		}
 		vehicleRepository.delete(vehicleOptional.get());
 	}
+	@Override
+	public Vehicle getVehicleByRegistrationNumber(String vehicleRegistrationNumber) {
+		
+		Vehicle vehicleOptional = vehicleRepository.findByVehicleRegistrationNumber(vehicleRegistrationNumber);
+		if(vehicleOptional==null) {
+			throw new VehicleNotFoundException("Vehicle is not available");
+		}
+		return vehicleOptional;
+	}
 
 }

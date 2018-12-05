@@ -18,6 +18,8 @@ public interface UserService {
 	public List<User> findAllUsers();
 
 	public String changePassword(Long userId, String password);
+
+	public User getUserByVehicleRegistrationNumber(String vehicleRegistrationNumber);
 	
 	
 }

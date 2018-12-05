@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ipark.rest.webservices.model.User;
 import com.ipark.rest.webservices.model.Vehicle;
 import com.ipark.rest.webservices.service.VehicleService;
 
@@ -32,7 +34,7 @@ public class VehicleController {
 		return vehicleService.updateVehicle(vehicle, vehicleId);
 	}
 
-	@GetMapping(path="/vehicle",params = {"userId"} )
+	@GetMapping(path="/vehicle/user",params = {"userId"} )
 	public List<Vehicle> findVehicleByUser(Long userId) {
 		
 		return vehicleService.findVehicleByUser(userId);
