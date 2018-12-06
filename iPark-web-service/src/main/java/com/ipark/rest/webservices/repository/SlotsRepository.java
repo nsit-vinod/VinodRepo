@@ -11,4 +11,8 @@ public interface SlotsRepository extends JpaRepository<Slots, Integer> {
 
 	List<Slots> findByParkingArea(ParkingArea parkingArea);
 
+	List<Slots> findByParkingAreaAndActive(ParkingArea parkingArea, int i);
+
+	List<Slots> findByActive(int i);
+
 }

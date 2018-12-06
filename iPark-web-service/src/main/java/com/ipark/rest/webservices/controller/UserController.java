@@ -2,7 +2,10 @@ package com.ipark.rest.webservices.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipark.rest.webservices.model.User;
+import com.ipark.rest.webservices.security.CustomUserDetails;
 import com.ipark.rest.webservices.service.UserService;
 
 @RestController
@@ -27,6 +32,12 @@ public class UserController {
 		return userService.createUser(user);
 	}
 
+	
+	@PostMapping(path="/user/signup")
+	public User signupUser(@RequestBody User user) {
+		// TODO Auto-generated method stub
+		return userService.createUser(user);
+	}
 	@PostMapping(path="/change-password/{userId}/{password}")
 	public String changePassword(@PathVariable("userId") Long userId,@PathVariable("password") String password) {
 		return userService.changePassword(userId, password);
@@ -61,4 +72,16 @@ public class UserController {
 		return userService.getUserByVehicleRegistrationNumber(vehicleRegistrationNumber);
 	}
 
+	@GetMapping(value = "/logout")
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
+	@PostMapping(path="/login")
+	public CustomUserDetails login() {
+		
+		CustomUserDetails user = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		return user;
+		
+	}
 }

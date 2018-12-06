@@ -39,6 +39,7 @@ public class Parking implements Serializable {
 	private VehicleCategory vehicleCategory;
 	
 	@ManyToOne
+	@JoinColumn(name = "vehicle_id", nullable = false)
 	private Vehicle vehicle;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -52,15 +53,15 @@ public class Parking implements Serializable {
 	@Column(name = "in_time", nullable = false)
 	private String inTime;
 
-	@Column(name = "out_time", nullable = false)
+	@Column(name = "out_time")
 	private String outTime;
 
-	@Column(name = "total_time", nullable = false)
+	@Column(name = "total_time")
 	private Long totalTime;
-	@Column(name = "earned_amount", nullable = false)
+	@Column(name = "earned_amount")
 	private String earnedAmount;
 
-	@Column(name = "paid_status", nullable = false)
+	@Column(name = "paid_status")
 	private int paidStatus;
 
 	public Long getId() {
@@ -141,6 +142,14 @@ public class Parking implements Serializable {
 
 	public void setPaidStatus(int paidStatus) {
 		this.paidStatus = paidStatus;
+	}
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
 
 }

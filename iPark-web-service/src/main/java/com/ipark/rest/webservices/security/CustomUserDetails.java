@@ -29,6 +29,15 @@ public class CustomUserDetails implements UserDetails {
 		return authorities;
 	}
 
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public void setAuthorities(List<GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub

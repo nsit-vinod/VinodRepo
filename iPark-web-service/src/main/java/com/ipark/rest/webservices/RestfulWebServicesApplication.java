@@ -7,10 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
 @SpringBootApplication
+@EnableSpringHttpSession
 public class RestfulWebServicesApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
@@ -32,9 +34,5 @@ public class RestfulWebServicesApplication extends SpringBootServletInitializer 
 		return resourceBundleMessageSource;
 	}*/
 	
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-		
-	}
+	
 }
